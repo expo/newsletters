@@ -1,0 +1,14 @@
+{
+  "name": "5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "react-native-link": "^3.0.0",
+    "react-native-url-handler": "^0.1.1"
+  }
+}
