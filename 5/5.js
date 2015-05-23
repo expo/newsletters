@@ -8,6 +8,7 @@ var {
   Image,
   ListView,
   ScrollView,
+  StatusBarIOS,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -25,10 +26,12 @@ var newsletterStyles = StyleSheet.create({
     fontSize: 14,
     paddingLeft: 8,
   },
-  section: {
+  sectionText: {
     color: '#3D4447',
     fontSize: 20,
     textAlign: 'center',
+  },
+  section: {
     paddingTop: 8,
     paddingBottom: 9,
     backgroundColor: 'white',
@@ -72,6 +75,15 @@ var newsletterStyles = StyleSheet.create({
     height: 0.5,
     backgroundColor: '#dddddd',
   },
+  statusBar: {
+    //backgroundColor: 'rgba(2, 60, 105, 0.98)',
+    backgroundColor: '#C0D7E3',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+
 
 });
 
@@ -97,6 +109,10 @@ var NewsletterIssue = React.createClass({
 
   _renderHeader() {
     var issueText = this.props.issueTitle || ('Issue #' + this.props.issueNumber);
+    var compiledBy = this.props.compiledBy || "Compiled by @notbrent (Brent Vatne)";
+    if (compiledBy) {
+      issueText += ", " + compiledBy;
+    }
     var width = windowDimensions.width;
     var height = Math.floor((96 / 570) * width);
     return (
@@ -138,7 +154,19 @@ var NewsletterSectionHeader = React.createClass({
   render() {
     var title = this.props.sectionTitle || this.props.children || 'Top News';
     return (
-      <Text style={[newsletterStyles.section, this.props.style,]}>{('' + title).toUpperCase()}</Text>
+      <View style={[newsletterStyles.section, this.props.style, {
+          //backgroundColor: '#C0D7E3',
+      }]}>
+        <Text style={[newsletterStyles.sectionText, this.props.style,]}>{('' + title).toUpperCase()}</Text>
+        <View style={{
+            height: 3,
+            backgroundColor: '#C0D7E3',
+            width: 120,
+            alignSelf: 'center',
+            //transform: [{translateY: -6,}],
+        }} />
+      <View style={{height: 2, backgroundColor: 'transparent',}} />
+      </View>
     );
   },
 });
@@ -163,26 +191,65 @@ var NewsletterStory = React.createClass({
 
 class NewsletterApp extends React.Component {
 
+  constructor() {
+    this._scrollOffset = {x: 0, y: 0};
+    this.state = {
+      statusBarHeight: 20,
+      editing: false,
+    };
+  },
+
+  _renderStatusBar() {
+    var sizeStyle = {height: this.state.statusBarHeight};
+    return <View style={[styles.statusBar, sizeStyle]} />;
+  }
+
   render() {
     return (
-      <NewsletterIssue
-        issueNumber="5"
-        style={{marginTop: 20,}}
-        stories={[
-          {
-            imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125473/NafWCZbW_400x400.png',
-            title: "@jordwalke signals towards what is coming for animations",
-            text: '“JavaScriptCore amazes me. Subtract the DOM, and you can animate huge amounts of UI without dropping frames on an old device. #reactnative”',
-            url: 'https://twitter.com/jordwalke/status/600613026899726336',
-          },
-          {
-            imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125477/Screen_Shot_2015-05-22_at_11.21.57_AM.png',
-            title: "Slides from @nicklockwood's React Native workshop",
-            text: "Well worth a read, @nicklockwood knows React Native as well as anyone and does a fine job of distilling the key information into this slide deck.",
-            url: 'https://www.dropbox.com/s/xg53fjyzrogxji9/UIKonf.pdf?dl=0',
+        <NewsletterIssue
+          issueNumber="5"
+          style={{marginTop: 20,}}
+          stories={
+            [
+              {
+                imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125473/NafWCZbW_400x400.png',
+                title: "@jordwalke signals towards what is coming for animations",
+                text: '“JavaScriptCore amazes me. Subtract the DOM, and you can animate huge amounts of UI without dropping frames on an old device. #reactnative”',
+                url: 'https://twitter.com/jordwalke/status/600613026899726336',
+              },
+              {
+                imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125477/Screen_Shot_2015-05-22_at_11.21.57_AM.png',
+                title: "Slides from @nicklockwood's React Native workshop",
+                text: "Well worth a read, @nicklockwood knows React Native as well as anyone and does a fine job of distilling the key information into this slide deck.",
+                url: 'https://www.dropbox.com/s/xg53fjyzrogxji9/UIKonf.pdf?dl=0',
+              },
+              {
+                imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125478/cover326x326.jpeg',
+                url: 'https://itunes.apple.com/us/podcast/react-podcast/id995869265',
+                title: 'React Podcast by Zach Silveira',
+                text: `The first episode of the React Podcast, titled "We're not Flux Experts", has been released. Subscribe in iTunes or whatever podcast app you use (I prefer player.fm for web/Android). Audio channels are a bit off in this episode but should be fixed in any upcoming episodes!`,
+              },
+              {
+                url: 'http://blog.typework.com/react-native-universal/',
+                imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2137163/react-native-7c474580d304785e40cea5245227c5b7.jpg',
+                title: 'A universal iOS app with React Native',
+                text: "An article about creating a universal iPhone and iPad app with different layouts, using React Native of course.",
+              },
+              {
+                url: 'http://brentvatne.ca/react-native-intro-talk/',
+                imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2138096/Screen_Shot_2015-05-22_at_11.22.51_AM.png',
+                title: "React Native Intro by @notbrent (me)",
+                text: "Video and slides from my presentation are available here! I tried to give an overview of why React, why React Native, and a bit of information about how React Native works. Personally I can't stomach listening to my own voice, but if you can then feel free to give it a watch/listen! It was my first time recording a talk, so go easy on me folks.",
+              },
+              {
+                url: 'http://brentvatne.ca/react-native-intro-talk/',
+                imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2138096/Screen_Shot_2015-05-22_at_11.22.51_AM.png',
+                title: "React Native Intro by @notbrent (me)",
+                text: "Video and slides from my presentation are available here! I tried to give an overview of why React, why React Native, and a bit of information about how React Native works. Personally I can't stomach listening to my own voice, but if you can then feel free to give it a watch/listen! It was my first time recording a talk, so go easy on me folks.",
+              },
+            ]
           }
-          ]}
-      />
+        />
     );
   }
 }
