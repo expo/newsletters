@@ -89,9 +89,17 @@ var newsletterStyles = StyleSheet.create({
 
 var NewsletterIssue = React.createClass({
   getInitialState() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    var ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+      sectionHeaderHasChanged: (s1, s2) => s1 !== s2,
+    });
+
+    var sectionIds = [];
+    for (var i = 0; i < this.props.sections.length; i++) {
+      sectionIds.push(this.props.sections[i][0]);
+    }
     return {
-      dataSource: ds.cloneWithRows(this.props.stories || []),
+      dataSource: ds.cloneWithRowsAndSections(this.props.stories || [], sectionIds),
     };
   },
 
@@ -209,55 +217,59 @@ class NewsletterApp extends React.Component {
 
   render() {
     return (
-        <NewsletterIssue
-          issueNumber="5"
-          issueDate="May 22, 2015"
-          style={{marginTop: 20, contentOffset: 20,}}
-          stories={
-            [
-              [
-                {
-                  imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125473/NafWCZbW_400x400.png',
-                  title: "@jordwalke signals towards what is coming for animations",
-                  text: '“JavaScriptCore amazes me. Subtract the DOM, and you can animate huge amounts of UI without dropping frames on an old device. #reactnative”',
-                  url: 'https://twitter.com/jordwalke/status/600613026899726336',
-                },
-                {
-                  imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125477/Screen_Shot_2015-05-22_at_11.21.57_AM.png',
-                  title: "Slides from @nicklockwood's React Native workshop",
-                  text: "Well worth a read, @nicklockwood knows React Native as well as anyone and does a fine job of distilling the key information into this slide deck.",
-                  url: 'https://www.dropbox.com/s/xg53fjyzrogxji9/UIKonf.pdf?dl=0',
-                },
-                {
-                  imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125478/cover326x326.jpeg',
-                  url: 'https://itunes.apple.com/us/podcast/react-podcast/id995869265',
-                  title: 'React Podcast by Zach Silveira',
-                  text: `The first episode of the React Podcast, titled "We're not Flux Experts", has been released. Subscribe in iTunes or whatever podcast app you use (I prefer player.fm for web/Android). Audio channels are a bit off in this episode but should be fixed in any upcoming episodes!`,
-                },
-                {
-                  url: 'http://blog.typework.com/react-native-universal/',
-                  imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2137163/react-native-7c474580d304785e40cea5245227c5b7.jpg',
-                  title: 'A universal iOS app with React Native',
-                  text: "An article about creating a universal iPhone and iPad app with different layouts, using React Native of course.",
-                },
-                {
-                  url: 'http://brentvatne.ca/react-native-intro-talk/',
-                  imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2138096/Screen_Shot_2015-05-22_at_11.22.51_AM.png',
-                  title: "React Native Intro by @notbrent (me)",
-                  text: "Video and slides from my presentation are available here! I tried to give an overview of why React, why React Native, and a bit of information about how React Native works. Personally I can't stomach listening to my own voice, but if you can then feel free to give it a watch/listen! It was my first time recording a talk, so go easy on me folks.",
-                },
-              ],
-              [
-                {
-                  url: 'http://brentvatne.ca/react-native-intro-talk/',
-                  imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2138096/Screen_Shot_2015-05-22_at_11.22.51_AM.png',
-                  title: "React Native Intro by @notbrent (me)",
-                  text: "Video and slides from my presentation are available here! I tried to give an overview of why React, why React Native, and a bit of information about how React Native works. Personally I can't stomach listening to my own voice, but if you can then feel free to give it a watch/listen! It was my first time recording a talk, so go easy on me folks.",
-                },
-              ],
-            ][0]
-          }
-        />
+      <NewsletterIssue
+        issueNumber="5"
+        issueDate="May 22, 2015"
+        style={{marginTop: 20, contentOffset: 20,}}
+        sections={[
+          ['top-news', 'Top News',],
+          ['highlights', "Highlights from Issues and Pull Requests",],
+          ['community', "Highlights from the Community",],
+          ['footer', "",],
+        ]}
+        stories={{
+          'top-news': [
+            {
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125473/NafWCZbW_400x400.png',
+              title: "@jordwalke signals towards what is coming for animations",
+              text: '“JavaScriptCore amazes me. Subtract the DOM, and you can animate huge amounts of UI without dropping frames on an old device. #reactnative”',
+              url: 'https://twitter.com/jordwalke/status/600613026899726336',
+            },
+            {
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125477/Screen_Shot_2015-05-22_at_11.21.57_AM.png',
+              title: "Slides from @nicklockwood's React Native workshop",
+              text: "Well worth a read, @nicklockwood knows React Native as well as anyone and does a fine job of distilling the key information into this slide deck.",
+              url: 'https://www.dropbox.com/s/xg53fjyzrogxji9/UIKonf.pdf?dl=0',
+            },
+            {
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125478/cover326x326.jpeg',
+              url: 'https://itunes.apple.com/us/podcast/react-podcast/id995869265',
+              title: 'React Podcast by Zach Silveira',
+              text: `The first episode of the React Podcast, titled "We're not Flux Experts", has been released. Subscribe in iTunes or whatever podcast app you use (I prefer player.fm for web/Android). Audio channels are a bit off in this episode but should be fixed in any upcoming episodes!`,
+            },
+            {
+              url: 'http://blog.typework.com/react-native-universal/',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2137163/react-native-7c474580d304785e40cea5245227c5b7.jpg',
+              title: 'A universal iOS app with React Native',
+              text: "An article about creating a universal iPhone and iPad app with different layouts, using React Native of course.",
+            },
+            {
+              url: 'http://brentvatne.ca/react-native-intro-talk/',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2138096/Screen_Shot_2015-05-22_at_11.22.51_AM.png',
+              title: "React Native Intro by @notbrent (me)",
+              text: "Video and slides from my presentation are available here! I tried to give an overview of why React, why React Native, and a bit of information about how React Native works. Personally I can't stomach listening to my own voice, but if you can then feel free to give it a watch/listen! It was my first time recording a talk, so go easy on me folks.",
+            },
+          ],
+          'highlights': [
+            {
+              url: 'http://brentvatne.ca/react-native-intro-talk/',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2138096/Screen_Shot_2015-05-22_at_11.22.51_AM.png',
+              title: "React Native Intro by @notbrent (me)",
+              text: "Video and slides from my presentation are available here! I tried to give an overview of why React, why React Native, and a bit of information about how React Native works. Personally I can't stomach listening to my own voice, but if you can then feel free to give it a watch/listen! It was my first time recording a talk, so go easy on me folks.",
+            },
+          ],
+        }}
+      />
 
     );
   }
