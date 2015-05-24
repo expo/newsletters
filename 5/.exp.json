@@ -1,0 +1,13 @@
+{
+  "pm2Id": 1,
+  "pm2Name": "exp-serve/5:abfb3eda",
+  "state": "RUNNING",
+  "port": 9000,
+  "ngrokBaseUrl": "https://8ef08c1.ngrok.com",
+  "lanBaseUrl": "http://10.204.83.24:9000",
+  "localhostBaseUrl": "http://localhost:9000",
+  "ngrokUrl": "https://8ef08c1.ngrok.com/5.includeRequire.runModule.bundle?dev=false",
+  "lanUrl": "http://10.204.83.24:9000/5.includeRequire.runModule.bundle?dev=false",
+  "localhostUrl": "http://localhost:9000/5.includeRequire.runModule.bundle?dev=false",
+  "err": null
+}
