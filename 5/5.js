@@ -369,7 +369,7 @@ class NewsletterApp extends React.Component {
               },
             },
             {
-              url: "chirag04/react-native-tooltip",
+              url: "http://github.com/chirag04/react-native-tooltip",
               imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2125805/screenshot.png',
               title: "chirag04/react-native-tooltip",
               text: "react-native-tooltip - A react-native wrapper for showing tooltips",
