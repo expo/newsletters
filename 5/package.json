@@ -8,6 +8,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "newsletter": "file:../newsletter",
     "react-native": "^0.4.4",
     "react-native-calendar": "^0.1.5",
     "react-native-link": "^3.0.0",

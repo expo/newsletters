@@ -1,0 +1,14 @@
+{
+  "name": "newsletter",
+  "version": "1.0.0",
+  "description": "For publishing React Native newsletters using React Native",
+  "main": "Newsletter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "exponent.team@gmail.com",
+  "license": "MIT"
+}

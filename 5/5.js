@@ -22,16 +22,14 @@ var CalendarExample = require('./CalendarExample');
 
 var windowDimensions = Dimensions.get('window');
 
-var Newsletter = equire('../Newsletter');
+var newsletter = require('newsletter');
 var {
   styles,
   NewsletterIssue,
   NewsletterStory,
   NewsletterSectionHeader,
-} = Newsletter;
+} = newsletter;
 
-
-/*
 class NewsletterApp extends React.Component {
 
   render() {
@@ -191,7 +189,7 @@ class NewsletterApp extends React.Component {
               url: 'twitter://user?screen_name=notbrent',
               renderContent: function (self) {
                 return (
-                  <Text style={[Newsletter.styles.text, {marginVertical: 20,}, self.props.style,]}>
+                  <Text style={[newsletter.styles.text, {marginVertical: 20,}, self.props.style,]}>
                     That&apos;s it for now! Ping me on Twitter @notbrent if you have anything that you would like me to share next week.
                   </Text>
                 );
@@ -203,7 +201,7 @@ class NewsletterApp extends React.Component {
               url: 'http://brentvatne.us10.list-manage1.com/subscribe?u=db0dd948e2b729ee62625b1a8&id=47cd41008f',
               renderContent: function (self) {
                 return (
-                  <Text style={[Newsletter.styles.text, {marginVertical: 20, fontWeight: 'bold'}, self.props.style]}>
+                  <Text style={[newsletter.styles.text, {marginVertical: 20, fontWeight: 'bold'}, self.props.style]}>
                     If you&apos;re reading this on the web, you can subscribe to get this delivered weekly to your email here!
                   </Text>
                 );
@@ -216,12 +214,6 @@ class NewsletterApp extends React.Component {
     );
   }
 }
-*/
 
-var NewsletterApp = React.createClass({
-  render() {
-    return (<Text>Hello</Text>);
-  },
-});
 
 AppRegistry.registerComponent('main', () => NewsletterApp);
