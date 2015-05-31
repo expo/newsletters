@@ -10,5 +10,8 @@
     "react-native"
   ],
   "author": "exponent.team@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-native": "ide/react-native#exp-2015-05-30"
+  }
 }
