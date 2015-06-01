@@ -20,6 +20,8 @@ var StatusBarIOS = require('StatusBarIOS');
 
 var windowDimensions = Dimensions.get('window');
 
+var Sudoku = require('Sudoku');
+
 var newsletter = require('newsletter');
 var {
   styles,
@@ -45,6 +47,7 @@ class NewsletterApp extends React.Component {
           ['friends', "Friends of the Newsletter",],
           ['footer', " ",],
         ]}
+        preambleStyle={null}
         preamble={`I know, I know, this was supposed to be sent out on Friday. Well you'll be happy to know that I wasn't procrastinating by sipping a beer on the beach; I spent most of my day on Friday, half of my Saturday and a good portion of the morning on Sunday triaging issues on the React Native repo - we're now down from almost 400 to about 180 open issues. Shoutouts to @ide, @jsierles, @cdro_, @ccheever for helping out, and to everyone on the React Native team for being so responsive to my mentions!`}
         stories={{
           'top-news': [
@@ -186,7 +189,10 @@ Little known fact: cookies are actually set with \`fetch\` in React Native. Ther
               text: `Cultural sensitivity in the form of a React Native plugin`,
             },
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2187145/Screen_Shot_2015-05-31_at_2.39.30_PM.png',
+              //imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2187145/Screen_Shot_2015-05-31_at_2.39.30_PM.png',
+              renderImage: function (self) {
+                return (<Sudoku />);
+              },
               title: 'christopherdro/react-native-sudoku',
               url: 'https://github.com/christopherdro/react-native-sudoku',
               text: `Seemingly as a sort of meta-puzzle game, @christopherdro's puzzle was to create a Sudoku puzzle game in React Native. Spoiler: he solved it.`,
@@ -261,7 +267,7 @@ Check them out if you have a need for a tool that removes the incidental complex
               renderContent: function (self) {
                 return (
                   <Text style={[newsletter.styles.text, {marginVertical: 20, fontWeight: 'bold'}, self.props.style]}>
-                    If you&apos;re reading this on the web, you can subscribe to get this delivered weekly to your email here!
+                    If you&apos;re not already a subcriber, you can subscribe to get this delivered weekly to your email here!
                   </Text>
                 );
               },
