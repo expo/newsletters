@@ -74,7 +74,11 @@ var newsletterStyles = StyleSheet.create({
     left: 0,
     right: 0,
   },
-
+  preamble: {
+    fontSize: 14,
+    color: '#666666',
+    paddingHorizontal: 8,
+  },
 
 });
 
@@ -141,6 +145,9 @@ var NewsletterIssue = React.createClass({
           <Text>{compiledBy}</Text>
         </Text>
         {this.props.webUrl && (<Link url={this.props.webUrl} underlayColor='#C0D7E3' activeOpacity={0.618}><Text style={[newsletterStyles.issue, {fontSize: 17, color: '#C0D7E3', paddingVertical: 6, textAlign: 'center',}]}>Also available on the web</Text></Link>) || null}
+        {this.props.preamble && (
+          <Text style={[newsletterStyles.preamble, this.props.preambleStyle]}>{this.props.preamble}</Text>
+        ) || null}
       </View>
     );
   },
@@ -151,6 +158,7 @@ var NewsletterIssue = React.createClass({
 
     return (
       <NewsletterSectionHeader {...sectionData}
+
         sectionID={sectionID}
         sectionTitle={sectionTitle}
       />

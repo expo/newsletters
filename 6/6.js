@@ -34,9 +34,10 @@ class NewsletterApp extends React.Component {
     return (
       <NewsletterIssue
         issueNumber="5"
-        issueDate="May 22, 2015"
-        webUrl="http://brentvatne.ca/react-native-newsletter/22-05-2015.html"
+        issueDate="May 31, 2015"
+        webUrl="http://brentvatne.ca/react-native-newsletter/31-05-2015.html"
         style={{marginTop: 20, contentOffset: 20,}}
+        compiledBy=" "
         sections={[
           ['top-news', 'Top News',],
           ['highlights', "Issues and Pull Requests",],
@@ -44,6 +45,7 @@ class NewsletterApp extends React.Component {
           ['friends', "Friends of the Newsletter",],
           ['footer', " ",],
         ]}
+        preamble={`I know, I know, this was supposed to be sent out on Friday. Well you'll be happy to know that I wasn't procrastinating by sipping a beer on the beach; I spent most of my day on Friday, half of my Saturday and a good portion of the morning on Sunday triaging issues on the React Native repo - we're now down from almost 400 to about 180 open issues. Shoutouts to @ide, @jsierles, @cdro_, @ccheever for helping out, and to everyone on the React Native team for being so responsive to my mentions!`}
         stories={{
           'top-news': [
             {
