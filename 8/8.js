@@ -116,166 +116,121 @@ Also check out @frantic's React Native Tutorial slides from the end of March.`,
 
           'highlights': [
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2215645/Screen_Shot_2015-06-05_at_11.47.02_AM.png',
-              title: 'brentvatne/react-native-issues',
-              text: `You might have noticed that I've started tagging every issue and pull request with a [ComponentName] prefix. Aside from making this easier to visually parse, there are other benefits.
-
-Looking at a list of issues doesn't do much to give you the big picture for what needs work on a repository. So I put together a little app that pulls the issues from Github, parses out the tags and provides a few graphs & data tables to help us better understand the current state of affairs.
-
-The first graphs just sum up the occurrences of tags across issues. The last data table uses number of unique commenters on an issue as a proxy to determine its importance to the community.
-
-If you have any ideas for how we can change this to get more insight, ping me @notbrent on Twitter or create an issue on this repo.
-
-Check it out live, if divshot isn't down for some reason`
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2266542/YJYPm.png',
+              title: 'XHR FormData upload example by @philikon',
+              url: 'https://github.com/facebook/react-native/commit/628609a0691335a3542e6ee069fc16b17c57b3f9',
+              text: `Pull down master and give this a try - it demonstrates how you can use FormData to upload files, eg: photos, via HTTP post. Made possible by @nicklockwood in this commit.`,
             },
-
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2201968/Screenshot_2015-06-05_18.34.34.png',
-              title: 'Directly wrap UITableView with a TableViewIOS component',
-              text: `This is something that the React Native team has tried to do on several occasions but never found a satisfactory solution. Some issues with ListView:
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2259284/0_Igmp3eJSGfJ4zn2d.jpg',
+              title: 'React Native Meets Async Functions — And it’s wonderful.',
+              url: 'https://medium.com/the-exponent-log/react-native-meets-async-functions-3e6f81111173',
+              text: `Related to this commit, a fantastic article by @ide about async/await and React Native. Go read it, I'll await!
 
-It doesn't have re-ordering functionality
-It doesn't de-allocate/re-use views intelligently, so memory usage grows as you scroll through a large list.
-If there are problems that you are interested in solving, your efforts would be much appreciated by the community. This is not something that will be solved by the team at Facebook in the near future, they have other priorities, so this will need to be a community driven effort. Jump into this issue to discuss!`,
-              url: 'https://github.com/facebook/react-native/issues/332#issuecomment-107716637',
+** You will notice in this post that the async/await support mentioned in the JSJ Flow podcast has landed in Flow`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2200064/Screenshot_2015-06-05_18.32.43.png',
-              title: 'Stop traversing the whole view hierarchy every frame',
-              text: 'This was highlighted in this the 0.6.0-rc release notes and for good reason, @tadeuzagallo commented that "On ~10k views it went from ~20ms to ~0.05ms" - big optimization!',
-              url: 'https://github.com/tadeuzagallo/react-native/commit/b03446e27e99e2d6117190c08ffff1bb5f3495a3',
-
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2266543/112170.jpg',
+              title: 'Element inspector interop with React Devtools',
+              url: 'https://github.com/facebook/react-native/commit/d68776d5deebfc54a22f87eab36d95ca2abccade',
+              text: `@jaredly continues to make an impact, this little commit is a fine addition to the debugging support - now selecting an element with the element inspector will cause it to also be selected by React Devtools, nifty stuff.`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2200063/Screenshot_2015-06-07_10.07.28.png',
-              title: 'Launch screen white flash',
-              text: `More follow up on this thread by @nicklockwood - expect an official solution to this soon, for now he provides a temporary workaround that allows you to customize the transition from Launch Screen > Intermediate Screen while loading React Native > Your React Native App.`,
-              url: 'https://github.com/facebook/react-native/issues/1402#issuecomment-107629965',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2268938/764414.png',
+              title: 'Remove module info from the data section + allow external modules',
+              url: 'https://github.com/facebook/react-native/commit/e9095b2f4277918c7b62d2e3dab3f77e79ca4776',
+              text: `This commit by @tadeuzagallo "lets external libraries define RN modules instead of previously requiring everything to be compiled together as one library" - thanks @ide for pointing it out!`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2225496/2443058.jpg',
-              title: `@rxb's take on ScrollView paging`,
-              text: `"This is an enhancement for ScrollView that adds the ability to paginate based on a width other than the width of the ScrollView itself. This is a fairly common pattern used on apps like Facebook, App Store, and Twitter to scroll through a horizontal set of cards or icons"
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2268940/1483597.jpg',
+              title: 'Remove contextual navigation from Navigator',
+              url: 'https://github.com/facebook/react-native/commit/4690983c10a60d84a98a2a6f8bdf9a1c39d2ef74',
+              text: `This commit is a big red diff and "is a breaking change to Navigator - removes 'contextual navigation' for the time being. So now events and routes don’t automatically propagate from a child navigator to its parent." Thanks again @ide for pointing this out.
 
-Video of it in action: https://vid.me/aoby
-
-I personally love this PR because I ran into issues with the default pagination and this proposal gives us a lot more control over it!`,
-              url: 'https://github.com/facebook/react-native/pull/1532',
+Be sure to read it through if you're using nested navigators in your app - this will likely be included in 0.7.0rc which will be coming next week.`,
             },
-
-            {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2232384/687474703a2f2f692e696d6775722e636f6d2f587776585447592e706e67.png',
-              title: 'Maintaining aspect ratio on network images',
-              text: `An interesting proposal from @paramaggarwal to take a network images specified dimensions into account and take those into account when calculating width/height based on flex attributes in order to maintain the aspect ratio. Feel free to chime in with your thoughts!`,
-              url: 'https://github.com/facebook/react-native/pull/1538',
-            },
-
           ],
           community: [
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2215643/image.png',
-              title: 'naoufal/react-native-touch-id',
-              text: `It really can't get any easier than this to interface with the native touch id api. @naoufal strikes again with his third module in as many weeks - maybe I should make a "naoufal's module of the week" section for this newsletter :p`,
-              url: 'https://github.com/naoufal/react-native-touch-id',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2251291/40662.jpg',
+              title: 'jordanbyron/react-native-event-source',
+              url: 'https://github.com/jordanbyron/react-native-event-source',
+              text: `"A react-native interface for EventSource: Server-Sent Events for iOS", Great for integrating with Rails 4 apps using ActionController::Live`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2229194/avatar.jpg',
-              title: 'Automating iOS App Icon Creation',
-              text: `Death, taxes, and iOS app icon creation - you can't avoid them. "Automate creation of iOS App Icons using SVG multi-rasterization to PNG with Inkscape and shell scripting."`,
-              url: 'http://habd.as/automating-ios-app-icon-creation/',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2247313/Screen_Shot_2015-06-11_at_2.29.30_PM.png',
+              title: 'naoufal/react-native-activity-view',
+              url: 'https://github.com/naoufal/react-native-activity-view',
+              text: `That's four now, four weeks in a row of React Native libraries for @naoufal! This library is similar to ActionSheetIOS that comes in React Native core but with a slightly different API and it gives you the ability to add images to your shared content as well.`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2226535/masked-view-screenshot.png',
-              title: 'gilbox/react-native-masked-view',
-              text: `View masking can at times be incredibly useful - think for a moment how you might build a semi-transparent overlay with a circle cut out to shine a spotlight on a part of the underlying interface - this type of thing is common in app intro tours. Check this library out for a way to do this type of thing in React Native.`,
-              url: 'https://github.com/gilbox/react-native-masked-view',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2250640/239676.jpg',
+              title: 'necolas/react-web-sdk',
+              url: 'https://github.com/necolas/react-web-sdk',
+              text: `@necolas, a developer at Twitter, takes the first serious stab at coming up with a tool to make your components run on both React for the browser and React Native. Browse through the README then pull the project and give it a try. If you have any feedback, be sure to leave it!`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2215650/ae83ca165d42adc2.png',
-              title: 'React Native components that you want to see',
-              text: `I started a discussion thread on discuss.reactjs.org where people can share their component ideas, join in and share your ideas!`,
-              url: 'https://discuss.reactjs.org/t/react-native-components-that-you-want-to-see/523/13',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2259786/tTcT7xJ.png',
+              title: 'React Native Tinder-like cards',
+              url: 'http://browniefed.com/blog/2015/06/06/react-native-tinder-like-cards/',
+              text: `React-Native Tinder like cards from the JavaScript Without Grammar by @browniefed. Check out the example on rnplay.org`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2232427/CG0nY_QXIAIaMlH.png',
-
-              title: 'chendesheng/ReagentNativeDemo',
-              text: '@chendesheng demos integrating the elegant ClojureScript React-based library Reagent with React Native in this repo.',
-              url: 'https://github.com/chendesheng/ReagentNativeDemo',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2259787/db61b072-1076-11e5-8aa2-52417f019ea0.jp',
+              title: 'catalinmiron/react-native-dribbble-app',
+              url: 'https://github.com/catalinmiron/react-native-dribbble-app',
+              text: `We mentioned this one a few weeks ago, it's now open source - looks pretty slick! That's the second Dribbble clone in this week's newsletter.`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2202980/Screenshot_2015-06-07_10.22.58.png',
-              title: 'jeanregisser/react-native-popover',
-              text: `Popovers are great, and @jeanregisser has done the hard work so all you need to do is include his lib and you get them for free. Neato.`,
-              url: 'https://github.com/jeanregisser/react-native-popover#readme',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2264576/186674.jpg',
+              title: 'lwansbrough/react-native-multipeer',
+              url: 'https://github.com/lwansbrough/react-native-multipeer',
+              text: `"Communicate over ad hoc wifi using Multipeer Connectivity" - FireChat anyone?`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2215644/google_cloud_messaging-100050099-large.jpg',
-              title: 'bh5-pods/react-native-gcm',
-              text: `I don't claim to have any idea what Google Cloud Messaging is**, but if you care about it and you're reading this newsletter then there is a good chance you will find this module useful.
-
-              ** Apparently Cyber Criminals (aka criminals) used to use it though, so that's cool.`,
-              url: 'https://github.com/bh5-pods/react-native-gcm',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2247314/screenshot-2.png',
+              title: 'mrblueblue/react-native-alt-demo',
+              url: 'https://github.com/mrblueblue/react-native-alt-demo',
+              text: `A demo app of that uses the popular new Flux library called "Alt" with React Native.`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2201969/Screenshot_2015-06-05_18.57.16.png',
-              title: 'skevy/react-native-gsap-demo',
-              text: `A follow-up to the mention of using GSAP and React Native a few weeks ago, skevy created an example app that uses Timeline to co-ordinate tweens, very neat!`,
-              url: 'https://github.com/skevy/react-native-gsap-demo',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2264641/378279.jpg',
+              title: 'oblador/react-native-collapsible',
+              url: 'https://github.com/oblador/react-native-collapsible',
+              text: `Similar to the accordion component from a couple of weeks ago, collapsible is a higher order component that you could use as a base to build an accordion, or just on its own.`
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2215646/Screenshot_2015-06-07_10.08.55.png',
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2265021/954063.jpg',
+              title: 'chirag04/react-native-in-app-utils',
+              url: 'https://github.com/chirag04/react-native-in-app-utils',
+              text: `@chirag04 wants to help you handle in-app purchases. Will you let him? Stay tuned.`,
+            },
+            {
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2265025/dunce-cap.jpg',
               title: 'adamjmcgrath/react-native-simple-auth',
-              text: `Easily add authentication to your app via Facebook, Twitter, Github, etc. The downside: this uses an in-app browser for authentication, so for apps like Facebook and Twitter where you probably have them installed on your phone already, this library will not use those apps and users will have to re-enter their credentials.`,
               url: 'https://github.com/adamjmcgrath/react-native-simple-auth',
+              text: `I'm a silly man - so I know, I linked to this last week, but @adamjmcgrath gracefully pointed out an error in my description. For Facebook and Twitter it does not use an in-app browser, it uses native iOS apis - a bit different from integrating with the Facebook or Twitter SDK but still works great!`,
             },
-
             {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2215647/Screenshot_2015-06-05_19.00.15.png',
-              title: 'facebook/react-native-applinks',
-              text: `The first external library for React Native that has been released outside of the main repo - it helps you handle incoming and outgoing deep links between native apps. I'll admit I don't totally grok it, so if you want to put together a blog post explaining it and how to use it, that would be fantastic and I will include it in an upcoming newsletter.`,
-              url: 'https://github.com/facebook/react-native-applinks',
-            },
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2266458/messages_imessages.jpg',
+              title: 'exponentjs/react-native-invertible-scroll-view',
+              url: 'https://github.com/exponentjs/react-native-invertible-scroll-view',
+              text: `"InvertibleScrollView is a React Native scroll view that can be inverted so that content is rendered starting from the bottom, and the user must scroll down to reveal more. This is a common design in chat applications and the command-line terminals. InvertibleScrollView also supports horizontal scroll views to present content from right to left." - from @ide and @ccheever of exponent
 
-            {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2215648/Screenshot_2015-06-07_10.18.59.png',
-              title: 'CSS-Layout and React ART',
-              text: `In this blog post, @browniefed demos how you might use React ART with css-layout, React Native's layout engine.`,
-              url: 'http://browniefed.com/blog/2015/06/01/css-layout-and-react-art/',
+This was a released a while ago but I mention it now because this commit landed into master which means that if you install from master you will no longer need a patched version of React Native for this library to work. Worth checking it out if only for an example of how to build your own higher-order ScrollView components!`,
             },
+            {
+              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2266459/Screen_Shot_2015-06-12_at_6.49.19_PM.png',
+              title: 'brentvatne/react-native-scrollable-tab-view',
+              url: 'https://github.com/brentvatne/react-native-scrollable-tab-view',
+              text: `Tabbed navigation that you can swipe between, each tab can have its own ScrollView and maintain its own scroll position between swipes. Pleasantly animated. Customizable tab bar. It's my favorite navigation pattern from Android, underused currently on iOS in my opinion.
 
-            {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2219883/Screenshot_2015-06-07_10.21.05.png',
-              title: 'lmorchard/react-multiplatform',
-              text: `"An experiment to build a React-based app on multiple platforms" - web and native`,
-              url: 'https://github.com/lmorchard/react-multiplatform',
-            },
+Check out this example gif that uses a custom tab bar to implement the same behavior as the Facebook Android app.
 
-            {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2229193/seURKezN_400x400.jpeg',
-              title: '"Weekend project messing with maps and #reactnative "',
-              text: `@bsudekum - MapBox employee and the author of react-native-mapbox-gl, put together a neat little weekend project using his library. See the demo here`,
-              url: 'https://twitter.com/bobws/status/603043992159158273',
-            },
+This second example gif shows another common pattern - a sliding line to indicate tab selection.
 
-            {
-              imageUrl: 'https://goodbits-production.s3.amazonaws.com/uploads/link/thumbnail/2232628/Screen_Shot_2015-06-07_at_1.40.19_PM.png',
-              title: 'TouchableBounce',
-              text: `One of the lesser known Touchable* components is TouchableBounce - it transforms its children's scaleXY property to create a bounce effect when you tap on it. Click through this link to see the example on rnplay.org`,
-              url: 'https://rnplay.org/apps/q8c-hg?autoplay=true',
-            },
+Check out the README for details on how to implement your own custom tab bar, and let me know if you have any feedback!`,
+            }
 
 
           ],
