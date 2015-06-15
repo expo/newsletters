@@ -1,0 +1,15 @@
+{
+  "name": "7",
+  "version": "0.0.0",
+  "description": "",
+  "main": "7.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "newsletter": "file:../newsletter",
+    "react-native-link": "^3.0.0",
+    "react-native-url-handler": "^0.2.0"
+  }
+}
