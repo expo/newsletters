@@ -114,7 +114,8 @@ var NewsletterIssue = React.createClass({
         renderRow={this._renderRow}
         renderSectionHeader={this._renderSectionHeader}
         renderHeader={this._renderHeader}
-        style={this.props.style}
+        contentInset={{top: -200, left: 100}}
+        style={[this.props.style, {backgroundColor: 'green', marginTop: 200,}]}
       />
     );
   },

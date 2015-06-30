@@ -1,4 +1,6 @@
+var _ = require('lodash-node');
 var cheerio = require('cheerio');
+var fs = require('fs');
 
 var sectionMap = {
   "Top News": 'top-news',
@@ -6,6 +8,34 @@ var sectionMap = {
   "Highlights from the community": 'community',
   "Friends of the newsletter": 'friends',
 };
+
+var builtInSections = {
+  footer: [/*
+    {
+      //url: 'https://twitter.com/notbrent',
+      url: 'twitter://user?screen_name=notbrent',
+      renderContent: function (self) {
+        return (
+          <Text style={[newsletter.styles.text, {marginVertical: 20,}, self.props.style,]}>
+          That&apos;s it for now! Ping me on Twitter @notbrent if you have anything that you would like me to share next week.
+          </Text>
+        );
+      },
+      imageUrl: 'https://pbs.twimg.com/profile_images/552276339709837313/eeDvc1SP.jpeg',
+      title: '',
+    },
+    {
+      url: 'http://brentvatne.us10.list-manage1.com/subscribe?u=db0dd948e2b729ee62625b1a8&id=47cd41008f',
+      renderContent: function (self) {
+        return (
+          <Text style={[newsletter.styles.text, {marginVertical: 20, fontWeight: 'bold'}, self.props.style]}>
+          If you&apos;re not already a subcriber, you can subscribe to get this delivered weekly to your email here!
+          </Text>
+        );
+      },
+    }
+  */]
+}
 
 function storiesFromHtml(html) {
   var lines = html.split("\n");
@@ -83,10 +113,14 @@ function storiesFromHtml(html) {
       // link
 
   }
-  return stories;
+  return _.assign(stories, builtInSections);
 }
 
 module.exports = function (file) {
   var html = fs.readFileSync(file, 'utf8');
   return storiesFromHtml(html);
+}
+
+if (require.main === module) {
+  console.log(module.exports(process.argv[2]));
 }
