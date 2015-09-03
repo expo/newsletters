@@ -1,0 +1,12 @@
+{
+  "name": "17",
+  "version": "0.0.0",
+  "description": "Hello Exponent!",
+  "main": "17.js",
+  "author": "ccheever@gmail.com",
+  "dependencies": {
+    "react-native": "exponentjs/react-native#2015-08-02-exp",
+    "react-native-link": "^3.0.0",
+    "react-native-url-handler": "^0.4.2"
+  }
+}

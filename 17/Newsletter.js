@@ -1,5 +1,8 @@
 /**
  * A trivial example of a React Native application
+ *
+ * @providesModule Newsletter
+ *
  */
 var React = require('react-native');
 
@@ -60,7 +63,7 @@ var newsletterStyles = StyleSheet.create({
   },
   storyHighlight: {
     //underlayColor: '#C0D7E3',
-    activeOpacity: 0.2,
+    //activeOpacity: 0.2,
   },
   separator: {
     height: 0.5,
@@ -114,8 +117,7 @@ var NewsletterIssue = React.createClass({
         renderRow={this._renderRow}
         renderSectionHeader={this._renderSectionHeader}
         renderHeader={this._renderHeader}
-        contentInset={{top: -200, left: 100}}
-        style={[this.props.style, {backgroundColor: 'green', marginTop: 200,}]}
+        style={[this.props.style, ]}
       />
     );
   },
