@@ -1,8 +1,8 @@
 {
-  "name": "17",
+  "name": "19",
   "version": "0.0.0",
   "description": "Hello Exponent!",
-  "main": "17.js",
+  "main": "19.js",
   "author": "ccheever@gmail.com",
   "dependencies": {
     "react-native": "exponentjs/react-native#2015-08-02-exp",

@@ -19,9 +19,6 @@ let {
   View,
 } = React;
 
-let ExBoxes = require('./ExBoxes');
-let ExPhotoGallery = require('./ExPhotoGallery');
-let ExScreen = require('./ExScreen');
 let Newsletter = require('Newsletter');
 let {
   styles,

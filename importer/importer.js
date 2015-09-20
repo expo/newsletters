@@ -4,7 +4,7 @@ var fs = require('fs');
 
 var sectionMap = {
   "Top News": 'top-news',
-  "Highlights from Issues and Pull Requests": 'highlights',
+  "Highlights from facebook/react-native": 'highlights',
   "Highlights from the community": 'community',
   "Friends of the newsletter": 'friends',
 };
@@ -74,7 +74,8 @@ function storiesFromHtml(html) {
       var sectionHtml = entryLines.join("\n");
       //var imageMatch= sectionHtml.match(/<img src="([^"]*)"/);
 
-      var imageMatch = sectionHtml.match(/<a href="[^"]*" style="border:0;outline:none"><img src="([^"]+)" alt="[^"]*" width="270" height="152" class="thumbnail" style="-ms-interpolation-mode:bicubic;float:none;outline:none;text-decoration:none;border:none;margin-bottom:6px;max-width:100%"><\/a>/);
+      // var imageMatch = sectionHtml.match(/<a href="[^"]*" style="border:0;outline:none"><img src="([^"]+)" alt="[^"]*" width="270" height="152" class="thumbnail" style="-ms-interpolation-mode:bicubic;float:none;outline:none;text-decoration:none;border:none;margin-bottom:6px;max-width:100%"><\/a>/);
+      var imageMatch = sectionHtml.match(/<img src="([^"]+)" alt="([^"]*)"/);
       if (imageMatch) {
         entry.imageUrl = imageMatch[1];
       }

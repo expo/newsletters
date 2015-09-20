@@ -4,9 +4,9 @@
  * @providesModule Newsletter
  *
  */
-var React = require('react-native');
+let React = require('react-native');
 
-var {
+let {
   AppRegistry,
   Image,
   ListView,
@@ -17,15 +17,15 @@ var {
   View,
 } = React;
 
-var Dimensions = require('Dimensions');
-var Link = require('react-native-link');
-var StatusBarIOS = require('StatusBarIOS');
+let Dimensions = require('Dimensions');
+let Link = require('react-native-link');
+let StatusBarIOS = require('StatusBarIOS');
 
 global.URLHandler = require('react-native-url-handler');
 
-var windowDimensions = Dimensions.get('window');
+let windowDimensions = Dimensions.get('window');
 
-var newsletterStyles = StyleSheet.create({
+let newsletterStyles = StyleSheet.create({
   issue: {
     color: '#87828A',
     fontSize: 14,
@@ -87,15 +87,15 @@ var newsletterStyles = StyleSheet.create({
 
 });
 
-var NewsletterIssue = React.createClass({
+let NewsletterIssue = React.createClass({
   getInitialState() {
-    var ds = new ListView.DataSource({
+    let ds = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2,
       sectionHeaderHasChanged: (s1, s2) => s1 !== s2,
     });
 
-    var sectionIds = [];
-    for (var i = 0; i < this.props.sections.length; i++) {
+    let sectionIds = [];
+    for (let i = 0; i < this.props.sections.length; i++) {
       sectionIds.push(this.props.sections[i][0]);
     }
     return {
@@ -104,8 +104,8 @@ var NewsletterIssue = React.createClass({
   },
 
   _sectionTitle(sectionId) {
-    for (var i = 0; i < this.props.sections.length; i++) {
-      var section = this.props.sections[i];
+    for (let i = 0; i < this.props.sections.length; i++) {
+      let section = this.props.sections[i];
       if (section[0] === sectionId) {
         return section[1];
       }
@@ -119,26 +119,31 @@ var NewsletterIssue = React.createClass({
         renderRow={this._renderRow}
         renderSectionHeader={this._renderSectionHeader}
         renderHeader={this._renderHeader}
-        style={[this.props.style, ]}
+        style={[/*this.props.style, */{
+          contentOffset: 15,
+        }]}
+        automaticallyAdjustContentInsets={false}
       />
     );
   },
 
   _renderHeader() {
-    var issueText = this.props.issueTitle || ('Issue #' + this.props.issueNumber);
-    var issueDate = this.props.issueDate;
-    var compiledBy = this.props.compiledBy || " by @notbrent (Brent Vatne)";
-    var headerImageUrl = this.props.headerImageUrl || 'https://goodbits-production.s3.amazonaws.com/uploads/newsletter_settings/logo/981/e0ca1ad4-f9b1-459f-b782-28c4fc63a7e3.png';
+    let issueText = this.props.issueTitle || ('Issue #' + this.props.issueNumber);
+    let issueDate = this.props.issueDate;
+    let compiledBy = this.props.compiledBy || " by @notbrent (Brent Vatne)";
+    let headerImageUrl = this.props.headerImageUrl || 'https://goodbits-production.s3.amazonaws.com/uploads/newsletter_settings/logo/981/e0ca1ad4-f9b1-459f-b782-28c4fc63a7e3.png';
     if (issueDate) {
       issueText += ", " + issueDate;
     }
     // if (compiledBy) {
     //   issueText += ", " + compiledBy;
     // }
-    var width = windowDimensions.width;
-    var height = Math.floor((96 / 570) * width);
+    let width = windowDimensions.width;
+    let height = Math.floor((96 / 570) * width);
     return (
-      <View>
+      <View style={{
+          paddingTop: 20,
+      }}>
         <Image source={{
             uri: headerImageUrl,
         }} style={{
@@ -159,7 +164,7 @@ var NewsletterIssue = React.createClass({
 
   _renderSectionHeader(sectionData, sectionID) {
 
-    var sectionTitle = this._sectionTitle(sectionID) || '';
+    let sectionTitle = this._sectionTitle(sectionID) || '';
 
     return (
       <NewsletterSectionHeader {...sectionData}
@@ -183,17 +188,18 @@ var NewsletterIssue = React.createClass({
 
 });
 
-var Separator = React.createClass({
+let Separator = React.createClass({
   render() {
     return (<View style={[newsletterStyles.separator, this.props.style]}></View>);
   }
 });
 
-var NewsletterSectionHeader = React.createClass({
+let NewsletterSectionHeader = React.createClass({
   render() {
-    var title = this.props.sectionTitle || this.props.children;
+    let title = this.props.sectionTitle || this.props.children;
     return (
       <View style={[newsletterStyles.section, this.props.style, {
+          paddingTop: 22,
           //backgroundColor: '#C0D7E3',
       }]}>
         <Text style={[newsletterStyles.sectionText, this.props.style,]}>{('' + title).toUpperCase()}</Text>
@@ -210,7 +216,7 @@ var NewsletterSectionHeader = React.createClass({
   },
 });
 
-var NewsletterStory = React.createClass({
+let NewsletterStory = React.createClass({
   render() {
     return (
       this.props.render && this.props.render(this) || (
