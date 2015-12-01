@@ -1,0 +1,12 @@
+{
+  "name": "25",
+  "version": "0.0.0",
+  "description": "Issue 25",
+  "main": "25.js",
+  "author": "ccheever@exp.host",
+  "dependencies": {
+    "react-native": "exponentjs/react-native#2015-10-08-xde",
+    "react-native-link": "^4.1.0",
+    "react-native-url-handler": "^0.4.2"
+  }
+}
